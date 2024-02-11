@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-4">
+        <canvas id="myChart" height="290px"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+        const labels = [{% if data1 %}{% for row in data1 %}"{{ row[0] }}",{% endfor %}{% endif %}];
+        const end_year = [{% if data1 %}{% for row in data1 %}"{{ row[1] }}",{% endfor %}{% endif %}];
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'End Year',
+                    data: end_year,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <div class="col-lg-2"></div>
+
+{% if data2 %}
+<div class="col-lg-4">
+    <canvas id="myChart1"></canvas>
+</div>
+
+<script>
+    const ctx1 = document.getElementById('myChart1');
+    const labels1 = [{% if data2 %}{% for row in data2 %}"{{ row[0] }}",{% endfor %}{% endif %}];
+    const start_year = [{% if data2 %}{% for row in data2 %}"{{ row[1] }}",{% endfor %}{% endif %}];
+
+    new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: labels1,
+            datasets: [{
+                label: 'Start Year',
+                data: start_year,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endif %}
+<div class="col-lg-1"></div>
+</div>
+
+<div class="row">
+    <div class="col-lg-1"></div>
+    {% if data3 %}
+    <div class="col-lg-4">
+        <canvas id="myChart2"></canvas>
+    </div>
+
+    <script>
+        const ctx2 = document.getElementById('myChart2');
+        const labels2 = [{% if data3 %}{% for row in data3 %}"{{ row[0] }}",{% endfor %}{% endif %}];
+        const relevance = [{% if data3 %}{% for row in data3 %}"{{ row[1] }}",{% endfor %}{% endif %}];
+
+        new Chart(ctx2, {
+            type: 'polarArea',
+            data: {
+                labels: labels2,
+                datasets: [{
+                    label: 'Relevance',
+                    data: relevance,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    {% endif %}
+    <div class="col-lg-2"></div>
+
+{% if data4 %}
+<div class="col-lg-4">
+    <canvas id="myChart3"></canvas>
+</div>
+
+<script>
+    const ctx3 = document.getElementById('myChart3');
+    const labels3 = [{% if data4 %}{% for row in data4 %}"{{ row[0] }}",{% endfor %}{% endif %}];
+    const likelihood = [{% if data4 %}{% for row in data4 %}"{{ row[1] }}",{% endfor %}{% endif %}];
+
+    new Chart(ctx3, {
+        type: 'radar',
+        data: {
+            labels: labels3,
+            datasets: [{
+                label: 'Likelihood',
+                data: likelihood,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endif %}
+<div class="col-lg-1"></div>
+</div>
+<div class="row">
+    {% if data5 %}
+    <div class="col-lg-1"></div>
+<div class="col-lg-4">
+    <canvas id="myChart4" height="290px"></canvas>
+</div>
+
+<script>
+    const ctx4 = document.getElementById('myChart4');
+    const labels4 = [{% if data5 %}{% for row in data5 %}"{{ row[0] }}",{% endfor %}{% endif %}];
+    const intensity = [{% if data5 %}{% for row in data5 %}"{{ row[1] }}",{% endfor %}{% endif %}];
+
+    new Chart(ctx4, {
+        type: 'line',
+        data: {
+            labels: labels4,
+            datasets: [{
+                label: 'Intensity',
+                data: intensity,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+{% endif %}
+</div>
+
+{% endblock body %}

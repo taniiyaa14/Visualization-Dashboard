@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Visualization Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+</head>
+  <body id="body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+            </div> 
+            <div class="col-lg-5 col-md-5 col-sm-12  my-4">
+                <div class="row mx-lg-3">
+                    <h1>Good Morning, John</h1>
+                </div>
+                <div class="row mx-lg-3">
+                    <p>Elevate Your Insights Here!</p>
+                </div>
+            </div>  
+            <div class="col-lg-4 col-md-4 my-lg-5 my-md-5">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 my-lg-2 my-md-2">
+                    <p>Add Filter:</p> 
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                      <form action="/" method="POST">
+                        <div class="mb-3">
+                          <select class="form-select" id="category" name="category">
+                            <option value="country" {% if selected_option =="country" %}selected{% endif %}>Country</option>
+                            <option value="region" {% if selected_option =="region" %}selected{% endif %}>Region</option>
+                            <option value="topic" {% if selected_option =="topic" %}selected{% endif %}>Topics</option>
+                            <option value="pestle" {% if selected_option =="pestle" %}selected{% endif %}>Pestle</option>
+                            <option value="source" {% if selected_option =="source" %}selected{% endif %}>Source</option>
+                            <option value="sector" {% if selected_option =="sector" %}selected{% endif %}>Sector</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-3">
+                        <button type="submit" class="btn btn-secondary">Submit</button>
+                      </div>
+                      </form>                
+                    </div>
+            </div>
+            </div> 
+        </div>
+        <p><center><i style="font-size:20px">Here is your insight data for: <u>{{selected_option}}</u></i></center></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+{% block body %}{% endblock body %}  
+</body>
+</html>
